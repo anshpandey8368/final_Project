@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scatch Shop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/6035602c6e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/Stylesheet/footer.css">
+</head>
+<body class="m-0 p-0">
+    <div class="wrapper h-[100vh] w-[100vw] overflow-hidden overflow-y-hidden">
+        <!-- Navigation Section -->
+        <nav class="flex justify-between px-[5%] py-[1%]">
+            <a href="/" class="text-2xl font-semibold mt-7">SCATCH</a>
+            <div class="options w-[1200px] flex justify-between mt-5">
+                <div class=" w-[500px] flex justify-between items-center ml-[-60px]">
+                    <a href="/product/men" class="ml-[10px] font-medium">MEN</a>
+                    <a href="/product/women" class="ml-[10px] font-medium">WOMEN</a>
+                    <a href="/product/kids" class=" font-medium">KIDS</a>
+                    <a href="/product/home-living" class=" font-medium">HOME & LIVING</a>
+                    <a href="/product/beauty" class=" font-medium">BEAUTY</a>
+                </div>
+
+                <div class="w-[100px] ml-5 flex flex-col justify-between items-center">
+                   <div>
+                        <a href="/user/logout" class="ml-[10px] text-black ml-2"><i class="fa-regular fa-user"></i></a>
+                        <a href="/user/cart" class="ml-[35px] font-semibold text-2xl"><i class="fa-solid fa-bag-shopping"></i></a>
+                   </div>
+                   <div class="flex gap-7 text-[12px] font-bold">
+                        <a href="" >Profile</a>
+                        <a href="">Bag</a>
+                   </div>
+                </div>
+            </div>
+        </nav>
+        <!-- <div class="h-[0.5px] w-[100%] bg-black"></div> -->
+
+        <!-- Main Content Section -->
+        <div class="main flex">
+            <!-- Sidebar Section -->
+            <div class="w-[20%] flex h-screen flex-col items-start p-10 border-zinc-200 border-x-2">
+                <div class="flex items-center gap-2">
+                    <h3 class="text-xl font-medium">Sort by</h3>
+                    <form action="/shop">
+                        <select class="border-[1px] px-2 py-1 font-semibold" name="sortby" id="">
+                            <option value="popular">Popular</option>
+                            <option value="newest">Newest</option>
+                        </select>
+                    </form>
+                </div>
+                <!-- Links Section -->
+                <div class="flex flex-col mt-20">
+                    <a class="block w-fit mb-2 font-normal text-slate-500" href="">New Collection</a>
+                    <a class="block w-fit mb-2 font-medium" href="">All Products</a>
+                    <a class="block w-fit mb-2 font-normal text-slate-500" href="">Discounted Products</a>
+                </div>
+                <!-- Filters Section -->
+                <div class="mt-[200px]">
+                    <a class="block w-fit mb-2 font-semibold" href="">Filter by:</a>
+                    <a class="block w-fit mb-2 font-semibold" href="">Availability</a>
+                    <a class="block w-fit mb-2 font-normal text-slate-500" href="">Discount</a>
+                </div>
+            </div>
+
+            <!-- Product Cards Section -->
+            <div class="products w-[75%] h-full p-10 flex flex-wrap gap-10">
+                <% if (products && products.length > 0) { %>
+                    <% products.forEach((product) => { %>
+                        <div class="card w-[17%] h-[40%]">
+                            <% if (product.image) { %>
+                                <div class="flex items-center justify-center  bg-[<%= product.bgColor %>] text-[<%= product.textColor %>] overflow-hidden">
+                                    <img src="data:image/jpeg;base64,<%= product.image.toString('base64') %>" alt="<%= product.name %>" class="w-full h-[185px] object-contain">
+                                </div>
+                            <% } else { %>
+                                <div class="w-[100%] h-[75%] flex items-center justify-center bg-gray-200">
+                                    <p>No Image Available</p>
+                                </div>
+                            <% } %>
+                            <div class="details flex flex-col justify-between items-center py-3 px-4 bg-[<%= product.panelColor %>]">
+                                <div class="name ml-[-5px] text-[16px] font-medium">
+                                    <h1 class="text-[10px] font-medium text-[#535766]"><%= product.description %></h1>
+                                    <div class="flex gap-2">
+                                        <h1 class="text-[16px] font-bold text-[#535766]">₹<%= product.price %></h1>
+                                        <h1 class="text-[10px] mt-[5px] font-normal text-[#535766] line-through">₹<%= (product.price - (product.price * product.discount / 100)).toFixed(2) %></h1>
+                                        <h1 class="text-[10px] mt-[5px] font-normal text-[#535766] ">(<%= product.discount %>% OFF)</h1>
+                                    </div>
+                                </div>
+                                <form class="" action="/user/addToCart/<%= product._id %>" method="get">
+                                    <input type="submit" value="ADD TO BAG" class="text-[#535766] text-[12px] h-auto w-[90%] px-7 border-2  border-white flex justify-center items-center ml-[8px]">
+                                </form>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } else { %>
+                    <p>No products available.</p>
+                <% } %>
+            </div>
+            
+            
+        </div>
+
+        <!-- Footer Section -->
+        <!-- <footer class="footer">
+            <div class="bubbles"></div>
+            <div class="content">
+                <!-- Footer Links -->
+                <div class="mt-[-100px]"> -->
+                    <!-- Example Footer Column -->
+                    <!-- <div>
+                        <b class="text-2xl">SCATCH</b>
+                        <a href="#">Secuce</a>
+                        <a href="#">Drupand</a>
+                        <a href="#">Oceash</a>
+                        <a href="#">Ugefe</a>
+                        <a href="#">Babed</a>
+                    </div> -->
+                    <!-- Additional Footer Columns -->
+                <!-- </div>
+                <div class="mt-[-100px]">
+                    <i class="fa-solid fa-person-walking-luggage text-4xl"></i>
+
+                    <p class="text-l">©2024 reserved all Copy right</p>
+                </div>
+            </div>
+            <svg style="position: fixed; top: 100vh">
+                <defs>
+                    <filter id="blob">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"/>
+                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="blob"/>
+                    </filter>
+                </defs>
+            </svg>
+        </footer> -->
+
+        <!-- Script for Bubble Animations -->
+        <script src="/javaScript/footer.js"></script>
+    </div>
+</body>
+</html>

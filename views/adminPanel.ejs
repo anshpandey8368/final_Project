@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCATCH-Admin</title>
+    <script src="https://kit.fontawesome.com/6035602c6e.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+    <% if(success.length>0){ %>
+        <div class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-red-500">
+            <span class="inline-block mt-1 mb-1 text-white">
+                <%= success %>
+            </span>
+        </div>
+        <% } %>
+
+    <div class="wrapper h-[100vh] w-[100vw] overflow-hidden overflow-y-hidden">
+        <!-- Navigation Section -->
+        <nav class="flex justify-between px-[5%] py-[1%]">
+            <h1 class="text-2xl font-semibold">Admin.</h1>
+            <div class="options">
+                <a href="" class="ml-[10px] font-medium">Home</a>
+                <a href="" class="ml-[10px] font-medium">Products</a>
+                <a href="" class="ml-[35px] font-semibold text-2xl"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="/user/logout" class="ml-[10px] font-medium w-[50px] h-[40px] font-semibold text-2xl bg-stone-400 p-3 rounded-[50%]">A</a>
+            </div>
+        </nav>
+        <div class="h-[0.5px] w-[100%] bg-black"></div>
+
+
+        <div class="main flex">
+            <div class="w-[20%] flex h-screen flex-col items-start p-10 border-zinc-200 border-x-2">
+                <div class="flex flex-col items-center gap-2">
+                    <h3 class="text-xl font-medium">All Product</h3>
+                    <h3 class="text-xl font-medium">Create New Product</h3>
+                </div>
+            </div>
+
+            <div class="h-[90vh] mt-[40px] p-10 flex gap-10 justify-around">
+        
+                <div class="flex flex-col mt-[100px] mb-[100px]">
+                    <h1 class="text-3xl font-bold mt-[-100px]">Create New Product</h1>
+                    <h1 class="text-2xl font-semibold mb-[15px]">Product Details</h1>
+
+                    <form action="/product/create" method="post" enctype="multipart/form-data">
+
+                        <div class="img flex justify-center gap-5">
+                            <label class="block mb-2 font-medium">Product Image</label>
+                            <input name="image" type="file" class="py-2 px-4 mt-[-10px] rounded" value="Select File">
+                        </div>
+                        <input type="text" name="name" placeholder="Product Name" class="bg-zinc-300 block w-full px-3 py-2 border-[1px] rounded-md mb-3 border-zinc-200">
+                        <input type="text" name="description" placeholder="Product description" class="bg-zinc-300 block w-full px-3 py-2 border-[1px] rounded-md mb-3 border-zinc-200">
+                        <div class="flex">
+                            <input type="text" name="price" placeholder="Product Price" class="bg-zinc-300 block w-full px-3 py-2 border-[1px] rounded-md mb-3 border-zinc-200">
+                            <input type="text" name="discount" placeholder="Discount Price" class="bg-zinc-300 block w-full px-3 py-2 border-[1px] rounded-md mb-3 border-zinc-200">
+                        </div>
+                        <input type="text" name="category" placeholder="gender" class="bg-zinc-300 block w-full px-3 py-2 border-[1px] rounded-md mb-3 border-zinc-200">
+
+                </div>
+                <div class="mt-[44px]">
+                    <h1 class="text-2xl font-semibold mb-[20px]">Panel Details</h1>
+                    <div class="d">
+                        <div class="panel flex">
+                            <input type="text" name="bgColor" placeholder="Background Color" class="bg-zinc-300 block w-full px-3 py-2 border-[1px] rounded-md mb-3 border-zinc-200">
+                            <input type="text" name="panelColor" placeholder="Panel Color" class="bg-zinc-300 block w-full px-3 py-2 border-[1px] rounded-md mb-3 border-zinc-200">
+                        </div>
+                        <input type="text" name="textColor" placeholder="Text Color" class="bg-zinc-300 block w-full px-3 py-2 border-[1px] rounded-md mb-3 border-zinc-200">
+                    </div>
+                    <input type="submit" value="Create Product" class="bg-blue-700 rounded-[50px] px-4 py-2 text-white text-l mb-[20px]">
+
+                </div>
+            </form>    
+            </div>
+        </div>    
+</body>
+</html>

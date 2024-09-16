@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scatch login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="m-0 p-0 box-border overflow-hidden">
+    <div class="wrapper w-[100vw] h-[100vh] px-[10%] flex flex-col relative">
+
+        <h1 class="text-black text-2xl absolute z-50 ml-[-35px] mt-5">Scatch</h1>
+
+        <div class="container w-[80%] flex items-center justify-between absolute">
+        
+        <div class="signup h-[100vh] w-[40%] bg-zinc-300 flex flex-col justify-center items-start px-10">
+
+            <h1 class="text-4xl">Welcome to <span class="text-blue-600 font-semibold">Scatch</span></h1>
+            <h3 class="text-2xl mb-5">create your account</h3>
+
+            <form autocomplete="off" action="/user/register" method="post" class="flex flex-col w-[90%]">
+                <input type="text" placeholder="FullName" name="name" class="bg-zinc-100 block w-full px-3 py-2 border-[1px] rounded-md mb-3 border-zinc-200">
+                <input type="email" placeholder="Email" name="email" class="bg-zinc-100 block w-full px-3 py-2 border-[1px] rounded-md mb-3 border-zinc-200">
+                <input type="password" placeholder="Password" name="password" class="bg-zinc-100 block w-full px-3 py-2 border-[1px] rounded-md mb-3 border-zinc-200">
+                <input type="submit" value="Create My Account" class="px-5 rounded-full py-3 w-[50%] mt-2 bg-blue-600 text-white">
+            </form>
+        </div>
+
+        <div class="or text-white text-xl p-2 bg-blue-600 w-[50px] h-[50px] rounded-full flex justify-center items-center"> or</div>
+
+        <div class="login h-[100vh] w-[40%]  flex flex-col justify-center items-start px-10">
+
+
+            <h1 class="text-2xl capitalize mb-5">Login your account</h1>
+
+            <% if (messages.length > 0) { %>
+                <div class="alert alert-danger">
+                    <% messages.forEach(function(message) { %>
+                        <p class="text-red-500"><%= message %></p>
+                    <% }); %>
+                </div>
+            <% } %>
+
+             <form action="/user/shop" method="post" class="flex flex-col w-[80%]" >
+                <select name="isAdmin" class="bg-zinc-300 block w-full px-3 py-2 border-[1px] rounded-md mb-3 border-zinc-200">
+                    <option value="User">User</option>
+                    <option value="Admin">Admin</option>
+                </select>
+                <input type="email" placeholder="Email" name="email" class="bg-zinc-300 block w-full px-3 py-2 border-[1px] rounded-md mb-3 border-zinc-200">
+                <input type="password" placeholder="Password" name="password" class="bg-zinc-300 block w-full px-3 py-2 border-[1px] rounded-md mb-3 border-zinc-200">
+                <input type="submit" value="Login" class="px-5 block rounded-full py-3 mt-2 bg-blue-500 text-white w-[30%]">
+            </form>
+        </div>
+
+    </div>
+        
+    </div>
+</body>
+</html>
